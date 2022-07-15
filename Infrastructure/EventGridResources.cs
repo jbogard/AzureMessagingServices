@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Pulumi;
+﻿using Pulumi;
 using AzureNative = Pulumi.AzureNative;
 using AzureAD = Pulumi.AzureAD;
 
