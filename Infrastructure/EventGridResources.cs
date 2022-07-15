@@ -10,10 +10,11 @@ public class EventGridResources
         AzureNative.Resources.ResourceGroup resourceGroup,
         AzureAD.GetUserResult jimmyUser)
     {
-        var exampleTopic = new AzureNative.EventGrid.Topic($"{prefix}-example-topic", new AzureNative.EventGrid.TopicArgs
-        {
-            ResourceGroupName = resourceGroup.Name
-        });
+        var exampleTopic = new AzureNative.EventGrid.Topic($"{prefix}-example-topic",
+            new AzureNative.EventGrid.TopicArgs
+            {
+                ResourceGroupName = resourceGroup.Name
+            });
 
         var eventGridJimmySenderRoleAssignment = new AzureNative.Authorization.RoleAssignment(
             $"{prefix}-example-topic-event-grid-data-sender-jimmy",
@@ -52,7 +53,8 @@ public class EventGridResources
                 PrincipalType = "User",
                 Scope = exampleSubscriberQueue.Id,
                 // This is "Azure Service Bus Data Receiver" role
-                RoleDefinitionId = "/providers/Microsoft.Authorization/roleDefinitions/4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0"
+                RoleDefinitionId =
+                    "/providers/Microsoft.Authorization/roleDefinitions/4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0"
             });
 
         var queueJimmyDataOwnerRoleAssignment = new AzureNative.Authorization.RoleAssignment(
@@ -63,7 +65,8 @@ public class EventGridResources
                 PrincipalType = "User",
                 Scope = exampleSubscriberQueue.Id,
                 // This is "Azure Service Bus Data Owner" role
-                RoleDefinitionId = "/providers/Microsoft.Authorization/roleDefinitions/090c5cfd-751d-490a-894a-3ce6f1109419"
+                RoleDefinitionId =
+                    "/providers/Microsoft.Authorization/roleDefinitions/090c5cfd-751d-490a-894a-3ce6f1109419"
             });
 
 
@@ -82,7 +85,7 @@ public class EventGridResources
                 {
                     IncludedEventTypes =
                     {
-                    "ExamplePublisher.WeatherForecast"
+                        "ExamplePublisher.WeatherForecast"
                     }
                 }
             }

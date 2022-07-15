@@ -11,15 +11,15 @@ public class EventHubResources
         AzureAD.GetUserResult jimmyUser)
     {
         var eventHubNamespace = new AzureNative.EventHub.Namespace($"{prefix}-example-namespace",
-               new AzureNative.EventHub.NamespaceArgs
-               {
-                   ResourceGroupName = resourceGroup.Name,
-                   Sku = new AzureNative.EventHub.Inputs.SkuArgs
-                   {
-                       Name = AzureNative.EventHub.SkuName.Basic,
-                       Tier = AzureNative.EventHub.SkuTier.Basic,
-                   }
-               });
+            new AzureNative.EventHub.NamespaceArgs
+            {
+                ResourceGroupName = resourceGroup.Name,
+                Sku = new AzureNative.EventHub.Inputs.SkuArgs
+                {
+                    Name = AzureNative.EventHub.SkuName.Basic,
+                    Tier = AzureNative.EventHub.SkuTier.Basic,
+                }
+            });
 
         var eventHub = new AzureNative.EventHub.EventHub($"{prefix}-weather-forecast",
             new AzureNative.EventHub.EventHubArgs
@@ -37,7 +37,7 @@ public class EventHubResources
                 PrincipalId = jimmyUser.ObjectId,
                 PrincipalType = "User",
                 Scope = eventHub.Id,
-            // This is "Azure Event Hubs Data Sender" role
+                // This is "Azure Event Hubs Data Sender" role
                 RoleDefinitionId =
                     "/providers/Microsoft.Authorization/roleDefinitions/2b629674-e913-4c01-ae53-ef4638d8f975"
             });
@@ -49,7 +49,7 @@ public class EventHubResources
                 PrincipalId = jimmyUser.ObjectId,
                 PrincipalType = "User",
                 Scope = eventHub.Id,
-            // This is "Azure Event Hubs Data Receiver" role
+                // This is "Azure Event Hubs Data Receiver" role
                 RoleDefinitionId =
                     "/providers/Microsoft.Authorization/roleDefinitions/a638d3c7-ab3a-418d-83e6-5f17a39d4fde"
             });
@@ -61,7 +61,7 @@ public class EventHubResources
                 PrincipalId = jimmyUser.ObjectId,
                 PrincipalType = "User",
                 Scope = eventHub.Id,
-            // This is "Azure Event Hubs Data Owner" role
+                // This is "Azure Event Hubs Data Owner" role
                 RoleDefinitionId =
                     "/providers/Microsoft.Authorization/roleDefinitions/f526a384-b230-433a-b45c-95f59c4a2dec"
             });
