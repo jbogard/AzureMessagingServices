@@ -35,15 +35,15 @@ public class WeatherForecastController : ControllerBase
             })
             .ToArray();
 
-        var eventGridEvent = new EventGridEvent(
+        var eventGridEvents = payload.Select(e => new EventGridEvent(
             "WeatherForecast",
             "ExamplePublisher.WeatherForecast",
             "1.0",
-            payload);
+            e));
 
         try
         {
-            await _client.SendEventAsync(eventGridEvent);
+            await _client.SendEventsAsync(eventGridEvents);
 
         }
         catch (RequestFailedException e)
